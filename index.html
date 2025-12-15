@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyCB - Charge Breeding Simulator</title>
+    
+    <!-- Bokeh -->
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-api-2.2.3.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="header-title">PyCB Charge Breeding Simulator</h1>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="app-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="sidebar-scroll">
+                <!-- Ion Parameters -->
+                <div class="param-section">
+                    <h3 class="section-title">⚛️ Ion Parameters</h3>
+                    
+                    <div class="form-group">
+                        <label>Element</label>
+                        <select id="elementSelector" class="form-control">
+                            <option value="H">H - Hydrogen</option>
+                            <option value="He">He - Helium</option>
+                            <option value="Li">Li - Lithium</option>
+                            <option value="Be">Be - Beryllium</option>
+                            <option value="B">B - Boron</option>
+                            <option value="C">C - Carbon</option>
+                            <option value="N">N - Nitrogen</option>
+                            <option value="O">O - Oxygen</option>
+                            <option value="F">F - Fluorine</option>
+                            <option value="Ne">Ne - Neon</option>
+                            <option value="Na">Na - Sodium</option>
+                            <option value="Mg">Mg - Magnesium</option>
+                            <option value="Al">Al - Aluminum</option>
+                            <option value="Si">Si - Silicon</option>
+                            <option value="P">P - Phosphorus</option>
+                            <option value="S">S - Sulfur</option>
+                            <option value="Cl">Cl - Chlorine</option>
+                            <option value="Ar">Ar - Argon</option>
+                            <option value="K">K - Potassium</option>
+                            <option value="Ca">Ca - Calcium</option>
+                            <option value="Sc">Sc - Scandium</option>
+                            <option value="Ti">Ti - Titanium</option>
+                            <option value="V">V - Vanadium</option>
+                            <option value="Cr">Cr - Chromium</option>
+                            <option value="Mn">Mn - Manganese</option>
+                            <option value="Fe">Fe - Iron</option>
+                            <option value="Co">Co - Cobalt</option>
+                            <option value="Ni">Ni - Nickel</option>
+                            <option value="Cu">Cu - Copper</option>
+                            <option value="Zn">Zn - Zinc</option>
+                            <option value="Ga">Ga - Gallium</option>
+                            <option value="Ge">Ge - Germanium</option>
+                            <option value="As">As - Arsenic</option>
+                            <option value="Se">Se - Selenium</option>
+                            <option value="Br">Br - Bromine</option>
+                            <option value="Kr">Kr - Krypton</option>
+                            <option value="Rb">Rb - Rubidium</option>
+                            <option value="Sr">Sr - Strontium</option>
+                            <option value="Y">Y - Yttrium</option>
+                            <option value="Zr">Zr - Zirconium</option>
+                            <option value="Nb">Nb - Niobium</option>
+                            <option value="Mo">Mo - Molybdenum</option>
+                            <option value="Tc">Tc - Technetium</option>
+                            <option value="Ru">Ru - Ruthenium</option>
+                            <option value="Rh">Rh - Rhodium</option>
+                            <option value="Pd">Pd - Palladium</option>
+                            <option value="Ag">Ag - Silver</option>
+                            <option value="Cd">Cd - Cadmium</option>
+                            <option value="In">In - Indium</option>
+                            <option value="Sn">Sn - Tin</option>
+                            <option value="Sb">Sb - Antimony</option>
+                            <option value="Te">Te - Tellurium</option>
+                            <option value="I">I - Iodine</option>
+                            <option value="Xe">Xe - Xenon</option>
+                            <option value="Cs">Cs - Cesium</option>
+                            <option value="Ba">Ba - Barium</option>
+                            <option value="La">La - Lanthanum</option>
+                            <option value="Ce">Ce - Cerium</option>
+                            <option value="Pr">Pr - Praseodymium</option>
+                            <option value="Nd">Nd - Neodymium</option>
+                            <option value="Pm">Pm - Promethium</option>
+                            <option value="Sm">Sm - Samarium</option>
+                            <option value="Eu">Eu - Europium</option>
+                            <option value="Gd">Gd - Gadolinium</option>
+                            <option value="Tb">Tb - Terbium</option>
+                            <option value="Dy">Dy - Dysprosium</option>
+                            <option value="Ho">Ho - Holmium</option>
+                            <option value="Er">Er - Erbium</option>
+                            <option value="Tm">Tm - Thulium</option>
+                            <option value="Yb">Yb - Ytterbium</option>
+                            <option value="Lu">Lu - Lutetium</option>
+                            <option value="Hf">Hf - Hafnium</option>
+                            <option value="Ta">Ta - Tantalum</option>
+                            <option value="W">W - Tungsten</option>
+                            <option value="Re">Re - Rhenium</option>
+                            <option value="Os">Os - Osmium</option>
+                            <option value="Ir">Ir - Iridium</option>
+                            <option value="Pt">Pt - Platinum</option>
+                            <option value="Au">Au - Gold</option>
+                            <option value="Hg">Hg - Mercury</option>
+                            <option value="Tl">Tl - Thallium</option>
+                            <option value="Pb">Pb - Lead</option>
+                            <option value="Bi">Bi - Bismuth</option>
+                            <option value="Po">Po - Polonium</option>
+                            <option value="At">At - Astatine</option>
+                            <option value="Rn">Rn - Radon</option>
+                            <option value="Fr">Fr - Francium</option>
+                            <option value="Ra">Ra - Radium</option>
+                            <option value="Ac">Ac - Actinium</option>
+                            <option value="Th">Th - Thorium</option>
+                            <option value="Pa">Pa - Protactinium</option>
+                            <option value="U">U - Uranium</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Initial State</label>
+                        <select id="injectionSelector" class="form-control">
+                            <option value="0">Gas Injection</option>
+                            <option value="1">Primary Ions</option>
+                        </select>
+                    </div>
+                <!-- Electron Parameters -->
+                <div class="param-section">
+                    <h3 class="section-title"> ⏱️Simulation time </h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start (s 1E-x)</label>
+                            <select id="minLogTime" class="form-control">
+                                <option value="-6">-6</option>
+                                <option value="-5">-5</option>
+                                <option value="-4">-4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>End (s 1E-x)</label>
+                            <select id="maxLogTime" class="form-control">
+                                <option value="-1">-1</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="param-section">
+                    <h3 class="section-title">⚡ Electron Beam</h3>
+                    <div class="form-group">
+                        <label>Energy (eV)</label>
+                        <input type="number" id="energySelector" class="form-control" value="1000" min="0" step="10">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current density (A/cm²)</label>
+                        <input type="number" id="densitySelector" class="form-control" value="1000" min="0" step="10">
+                    </div>
+                </div>
+                <div class="param-section">
+                    <h3 class="section-title">💨 Rest Gas</h3>
+                    <div class="form-group">
+                        <label>Ionization potential (eV)</label>
+                        <input type="number" id="restGasIP" class="form-control" value="13.6" min="0" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pressure (mbar)</label>
+                        <input type="text" id="restGasPressure" class="form-control" value="1E-10" placeholder="1E-10">
+                    </div>
+                </div>
+
+                <!-- Calculate Button -->
+                <button id="calculateBtn" class="btn-calculate">
+                    ▶️ Calculate
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Plot Area -->
+        <main class="main-area">
+            <div class="plot-container">
+                <div id="loadingMessage" class="loading-message"></div>
+                <div id="plotContainer"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Load plotting script -->
+    <script src="./bokeh_plot.js"></script>
+</body>
+</html>
